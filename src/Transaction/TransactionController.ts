@@ -7,9 +7,7 @@ export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
 
   @Get('/turnover/top')
-  async getTopWalletByLatestTransactions(
-    @Query('inLatestTransactions') latestTransactionsQuantity: number,
-  ): Promise<WalletDto> {
-    return await this.transactionService.getTopAddressByAbsoluteValue(latestTransactionsQuantity || 100);
+  async getTopWalletByLatestBlocks(@Query('inLatestBlocks') latestBlocksQuantity: number): Promise<WalletDto> {
+    return await this.transactionService.getTopAddressByAbsoluteValue(latestBlocksQuantity || 100);
   }
 }
